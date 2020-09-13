@@ -12,6 +12,7 @@ RouteModel::RouteModel(const std::vector<std::byte> &xml) : Model(xml) {
     CreateNodeToRoadHashmap();
 }
 
+// git asda
 
 void RouteModel::CreateNodeToRoadHashmap() {
     for (const Model::Road &road : Roads()) {
