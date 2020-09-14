@@ -109,7 +109,12 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
 
 void RoutePlanner::AStarSearch() {
     RouteModel::Node *current_node = nullptr;
-
+    std::vector<RouteModel::Node> path;
     // TODO: Implement your solution here.
+    while (current_node != end_node){
+    RoutePlanner::AddNeighbors(current_node);
+    current_node = NextNode();
+    }
+    m_Model.path = RoutePlanner::ConstructFinalPath(current_node);
 
 }
