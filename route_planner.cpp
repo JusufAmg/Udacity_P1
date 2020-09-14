@@ -48,7 +48,7 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
         x->parent = start_node;
         open_list.emplace_back(x);
     }
-} 
+}
 
 
 // TODO 5: Complete the NextNode method to sort the open list and return the next node.
@@ -87,7 +87,12 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
     std::vector<RouteModel::Node> path_found;
 
     // TODO: Implement your solution here.
-
+    while (current_node -> parent != nullptr) {
+        path_found.push_back(*current_node);
+        auto parent = *(current_node -> parent); //?
+        distance += current_node -> distance(parent);
+        current_node = current_node -> parent;
+    }
     distance *= m_Model.MetricScale(); // Multiply the distance by the scale of the map to get meters.
     return path_found;
 
